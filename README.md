@@ -94,3 +94,11 @@ bun run build # ✅
     - share contents to all its pages
   - routes can be static, \[dynamic\], (grouped)
     - learn [dynamic-routes](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) [route-groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups)
+
+- src modules folder
+  - put react logic and style into modules for corresponding app routes
+  - app routes is only for core structure!
+
+- modules/home/ui
+  - layouts/home-layout
+  - components/home-navbar
