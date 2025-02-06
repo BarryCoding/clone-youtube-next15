@@ -1,6 +1,14 @@
 # Progress
 
+> Hotter than Porn:
+> 🚀 Next.js 15 & React 19  
+> 💅 TailwindCSS & ShadcnUI & Prettier
+
 ## 01 project setup
+
+> Achievements:
+> 🚀 Next.js 15 & React 19  
+> 💅 TailwindCSS & ShadcnUI & Prettier
 
 - configure environment
   - runtime `bun`
@@ -67,3 +75,11 @@ bun run p-check # ✅
 bun run lint  # ✅
 bun run build # ✅
 ```
+
+## 02 basic layout
+
+- add logo svg
+  - remove unused assets in public folder
+- update root layout
+  - change font to Latin
+  - update metadata for better seo
