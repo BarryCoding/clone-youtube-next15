@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import { useAuth, useClerk } from '@clerk/nextjs'
 
 const items = [
   {
@@ -31,7 +32,8 @@ const items = [
 ]
 
 export const MainSection = () => {
-  // TODO: Implement clerk isSignedIn
+  const clerk = useClerk()
+  const { isSignedIn } = useAuth()
 
   return (
     <SidebarGroup>
@@ -42,9 +44,14 @@ export const MainSection = () => {
               <SidebarMenuButton
                 tooltip={item.title}
                 asChild
-                // TODO: isActive onClick
+                // TODO: isActive
                 isActive={false}
-                onClick={() => {}}
+                onClick={(e) => {
+                  if (!isSignedIn && item.auth) {
+                    e.preventDefault()
+                    return clerk.openSignIn()
+                  }
+                }}
               >
                 <Link href={item.url} className='flex items-center gap-4'>
                   <item.icon />

@@ -4,6 +4,7 @@
 > 1. 🚀 Next.js 15 & React 19 & TS & ESlint & Prettier
 > 2. 💅 TailwindCSS & ShadcnUI
 > 3. 📦 Module-based architecture
+> 4. 🔐 Authentication system with Clerk
 
 ## project setup
 
@@ -112,7 +113,7 @@ bun run build # ✅
 ## authentication
 
 > Achievements:  
-> ?
+> 🔐 Authentication system with Clerk
 
 - **integrate Clerk**
   - login to Clerk dashboard -> new Application -> ✅ gmail
@@ -138,3 +139,5 @@ bun add @clerk/nextjs@6.10.3
 
 - integrate clerk to auth-button
   - alway redirect to / after log out
+- useAuth on sidebar sections
+- update middleware to protect specific routes
