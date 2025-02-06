@@ -83,3 +83,13 @@ bun run build # ✅
 - update root layout
   - change font to Latin
   - update metadata for better seo
+
+- app router folders structure
+  - page component 'use server' in default
+    - can be async
+  - page component 'use client' must be explicit
+    - can use hooks
+    - can not be async
+  - layout component always has 'children' prop
+    - share contents to all its pages
+  - routes can be static, \[dynamic\], (grouped)

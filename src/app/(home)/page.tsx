@@ -1,5 +1,9 @@
 import Image from 'next/image'
 
+/**
+ * LEARN  ROUTE GROUPS
+ * @link https://nextjs.org/docs/app/building-your-application/routing/route-groups
+ */
 export default function Home() {
   return (
     <div className='flex text-rose-500'>
