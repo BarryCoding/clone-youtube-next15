@@ -93,3 +93,4 @@ bun run build # ✅
   - layout component always has 'children' prop
     - share contents to all its pages
   - routes can be static, \[dynamic\], (grouped)
+    - learn [dynamic-routes](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) [route-groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups)
