@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Progress
 
-## Getting Started
+## 01 project setup
 
-First, run the development server:
+- configure environment
+  - runtime `bun`
+  - package manager `bun`
+
+- why bun?
+  - run ts script and ESM
+  - less deps issue regarding React19 (really?)
+
+- basic bun commands
+  - `bun add` === 'npm install'
+  - `bunx` === 'npx' (still cause deps issue)
+
+- create Next15 project
+  - use exact version
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun -v # 1.20
+node -v # 22.13.0
+npm -v # 11.0.0
+
+# next15
+bunx create-next-app@latest --version
+bunx create-next-app@15.1.6
+# no turbopack
+# yes to others
+
+cd you-project
+bun run dev # ✅
+
+# shadcn
+bunx --bun shadcn@latest --version
+bunx --bun shadcn@2.1.8 init
+bunx --bun shadcn@2.1.8 add --all
+
+# if 'peer dep issue' happens 🚧
+bun install # update bun.lock
+bun run dev # ✅
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- remove `package-lock.json`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### prettier
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun add -D prettier prettier-plugin-tailwindcss eslint-config-prettier
+```
+- create / update configurations
+  - `.prettierrc`
+  - `eslint.config.mjs` eslintConfig
+  - `package.json` scripts
 
-## Learn More
+```bash
+bun run p-check
+bun run p-write
+bun run p-check # ✅
+```
 
-To learn more about Next.js, take a look at the following resources:
+- after installing new packages(prettier etc)
+  - always run lint then build first
+  - update `use-toast.ts` to solve lint errors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+bun run lint  # ✅
+bun run build # ✅
+```
