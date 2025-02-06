@@ -1,15 +1,15 @@
 # Progress
 
 > Hotter than Porn:
-> 🚀 Next.js 15 & React 19  
-> 💅 TailwindCSS & ShadcnUI & Prettier
-> 📦 Module-based architecture
+> 1. 🚀 Next.js 15 & React 19 & TS & ESlint & Prettier
+> 2. 💅 TailwindCSS & ShadcnUI
+> 3. 📦 Module-based architecture
 
 ## project setup
 
-> Achievements:
-> 🚀 Next.js 15 & React 19  
-> 💅 TailwindCSS & ShadcnUI & Prettier
+> Achievements:  
+> 🚀 Next.js 15 & React 19 & TS & ESlint & Prettier  
+> 💅 TailwindCSS & ShadcnUI
 
 - configure environment
   - runtime `bun`
@@ -79,7 +79,7 @@ bun run build # ✅
 
 ## basic layout
 
-> Achievements:
+> Achievements:  
 > 📦 Module-based architecture
 
 - add logo svg
@@ -108,3 +108,30 @@ bun run build # ✅
   - components/home-navbar
   - components/home-sidebar (provider and its trigger)
 - modules/auth/ui/components/auth-button
+
+## authentication
+
+> Achievements:  
+> ?
+
+- **integrate Clerk**
+  - login to Clerk dashboard -> new Application -> ✅ gmail
+  - follow nextjs instructions
+
+```bash
+# check package version
+npm show @clerk/nextjs version
+
+bun add @clerk/nextjs@6.10.3
+```
+
+1. Install @clerk/nextjs
+2. Set environment variables in `.env.local`
+3. Create src/middleware.ts
+4. Add ClerkProvider to root layout
+5. [Next Step](https://clerk.com/docs/references/nextjs/custom-sign-in-or-up-page) **sign-in screens**
+   - src/app/(auth)/
+     - layout
+     - `sign-in/[[...sign-in]]/page` ✅
+     - `sign-up/[[...sign-up]]/page` ✅
+   - update .env.local with `NEXT_PUBLIC_CLERK_SIGN_IN_URL`
