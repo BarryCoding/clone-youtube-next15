@@ -102,3 +102,4 @@ bun run build # ✅
 - modules/home/ui
   - layouts/home-layout
   - components/home-navbar
+- modules/auth/ui/components/auth-button

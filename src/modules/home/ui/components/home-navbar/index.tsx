@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { AuthButton } from '@/modules/auth/ui/components/auth-button'
 import { SearchInput } from './search-input'
 
 export const HomeNavbar = () => {
@@ -23,7 +24,9 @@ export const HomeNavbar = () => {
           <SearchInput />
         </div>
 
-        <div className='flex flex-shrink-0 items-center gap-4'>{/* <AuthButton /> */}</div>
+        <div className='flex flex-shrink-0 items-center gap-4'>
+          <AuthButton />
+        </div>
       </div>
     </nav>
   )
