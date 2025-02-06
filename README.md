@@ -135,3 +135,6 @@ bun add @clerk/nextjs@6.10.3
      - `sign-in/[[...sign-in]]/page` ✅
      - `sign-up/[[...sign-up]]/page` ✅
    - update .env.local with `NEXT_PUBLIC_CLERK_SIGN_IN_URL`
+
+- integrate clerk to auth-button
+  - alway redirect to / after log out
