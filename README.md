@@ -3,8 +3,9 @@
 > Hotter than Porn:
 > 🚀 Next.js 15 & React 19  
 > 💅 TailwindCSS & ShadcnUI & Prettier
+> 📦 Module-based architecture
 
-## 01 project setup
+## project setup
 
 > Achievements:
 > 🚀 Next.js 15 & React 19  
@@ -76,7 +77,10 @@ bun run lint  # ✅
 bun run build # ✅
 ```
 
-## 02 basic layout
+## basic layout
+
+> Achievements:
+> 📦 Module-based architecture
 
 - add logo svg
   - remove unused assets in public folder
@@ -102,4 +106,5 @@ bun run build # ✅
 - modules/home/ui
   - layouts/home-layout
   - components/home-navbar
+  - components/home-sidebar (provider and its trigger)
 - modules/auth/ui/components/auth-button
