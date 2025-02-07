@@ -1,0 +1,27 @@
+{
+  // peacock theme: the project logo color
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ef6b81",
+    "activityBar.background": "#ef6b81",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#1e730c",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#ef6b81",
+    "statusBar.background": "#ea3d5a",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#ef6b81",
+    "statusBarItem.remoteBackground": "#ea3d5a",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#ea3d5a",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#ea3d5a99",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#ea3d5a",
+
+  // https://trpc.io/docs/faq#vscode-settings
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

@@ -7,6 +7,7 @@
 > 4. 🔐 Authentication system with Clerk
 > 5. 🗄️ Neon PostgreSQL with DrizzleORM
 > 6. 🤝 sync users data by Clerk Webhook (Ngrok)
+> 7. 🔄 tRPC for type-safe APIs
 
 ## project setup
 
@@ -227,3 +228,53 @@ bun add svix@1.45.1
   - user.created -> neon ✅ sign up with gmail
   - user.updated -> neon ✅ update avatar image
   - user.deleted -> neon ✅ delete user in Clerk dashboard
+
+## tRPC
+
+> Achievements:  
+> 🔄 tRPC for type-safe APIs
+
+### tRPC setup 
+
+follow tRPC setup [docs](https://trpc.io/docs/client/react/server-components)
+
+1. Install deps
+
+```bash
+npm info @trpc/server
+# or 
+npm show @trpc/server@next version
+
+npm show @tanstack/react-query
+# or
+npm show @tanstack/react-query version
+
+bun add @trpc/server@11.0.0-rc.730 @trpc/client@11.0.0-rc.730 @trpc/react-query@11.0.0-rc.730
+
+bun add @tanstack/react-query@5.56.1 zod@3.24.1 client-only@0.0.1 server-only@0.0.1
+
+bun add react-error-boundary@5.0.0
+```
+
+2. Create a tRPC router (view sample backend)
+   1. src/trpc/init
+   2. src/trpc/routers/_app.ts
+   3. src/app/api/trpc/\[trpc\]/route.ts (~ -> @)
+3. Create a Query Client factory
+   1. src/trpc/query-client.ts
+4. Create a tPRC client for Client Components
+   1. src/trpc/client.tsx
+   2. update root layout src/app/layout
+5. Create a tRPC caller for Server Components
+   1. src/trpc/server.tsx
+
+- Using tRPC prefetch with suspense and ErrorBoundary
+  - update vscode settings [FAQ TS any](https://trpc.io/docs/faq)
+  - server component src/app/(home)/page
+  - client component src/app/(home)/client
+  - testing throw trpc error in src/trpc/routers/_app.ts
+    - trigger loading ✅
+    - trigger error   ✅
+- Clean Components Mindset
+  - RSC for prefetching data
+  - RCC for consuming prefetched data
