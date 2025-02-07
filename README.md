@@ -141,3 +141,29 @@ bun add @clerk/nextjs@6.10.3
   - alway redirect to / after log out
 - useAuth on sidebar sections
 - update middleware to protect specific routes
+
+## database setup
+
+> Achievements:  
+> 🗄️ Neon PostgreSQL with DrizzleORM
+
+```bash
+npm show drizzle-orm version
+
+bun add drizzle-orm@0.39.0 @neondatabase/serverless@0.10.4 dotenv@16.4.7
+bun add -D drizzle-kit@0.30.3 tsx@4.19.2
+```
+
+- create a postgreSQL database at neon.tech
+  - login to neon -> new project
+  - copy postgreSQL connection string(secure!)
+  - save it to .env
+- [setup DrizzleORM with neon](https://orm.drizzle.team/docs/get-started/neon-new)
+  - install deps
+  - create src/db
+  - create drizzle.config.ts
+
+```bash
+bunx drizzle-kit push   # ✅ apply changes to your database
+bunx drizzle-kit studio # ✅ open local database studio
+```
