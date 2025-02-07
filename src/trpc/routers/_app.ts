@@ -9,6 +9,8 @@ export const appRouter = createTRPCRouter({
     )
     .query((opts) => {
       // throw new TRPCError({ code: 'BAD_REQUEST' }) // test: error boundary and suspense
+      console.log(`🔎 🔍 ~ .query ~ clerkUserId from trpc context:`, opts.ctx.clerkUserId) // test: clerkUserId
+
       return {
         greeting: `hello ${opts.input.text}`,
       }

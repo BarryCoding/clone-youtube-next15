@@ -278,3 +278,22 @@ bun add react-error-boundary@5.0.0
 - Clean Components Mindset
   - RSC for prefetching data
   - RCC for consuming prefetched data
+
+### tRPC configuration
+
+```bash
+npm show superjson version
+
+bun add superjson@2.2.2
+```
+
+- enable transformer by superjson
+  - update 
+    - src/trpc/init
+    - src/trpc/query-client
+    - src/trpc/client
+- add auth to context
+  - update
+    - src/trpc/init `createTRPCContext()` with clerkUserId
+  - test ✅
+    - src/trpc/routers/_app retrieve clerkUserId from `ctx`
