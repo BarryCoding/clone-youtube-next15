@@ -5,6 +5,7 @@
 > 2. 💅 TailwindCSS & ShadcnUI
 > 3. 📦 Module-based architecture
 > 4. 🔐 Authentication system with Clerk
+> 5. 🗄️ Neon PostgreSQL with DrizzleORM
 
 ## project setup
 
@@ -166,4 +167,36 @@ bun add -D drizzle-kit@0.30.3 tsx@4.19.2
 ```bash
 bunx drizzle-kit push   # ✅ apply changes to your database
 bunx drizzle-kit studio # ✅ open local database studio
+```
+
+## webhook sync
+
+- create a ngrok account and login
+  - [install ngrok](https://dashboard.ngrok.com/get-started/setup/macos) by homebrew and add auth token
+  - [create a domain](https://dashboard.ngrok.com/domains)
+  - start the tunnel after running local dev (match local port)
+
+```bash
+# first
+bun run dev
+# then
+ngrok http --url=pumped-sunfish-crack.ngrok-free.app 3000
+```
+obtain a static domain https://pumped-sunfish-crack.ngrok-free.app/
+- Q: ngrok DNS_PROBE_FINISHED_NXDOMAIN 🔴
+- A: chrome settings -> privacy & security -> security:
+  - Advanced: use secure DNS on -> select DNS provider from `OS default` to `OpenDNS` 🟢
+
+- run both local dev and ngrok concurrently
+- stop dev and ngrok
+- update package.json script
+  - dev:ngrok
+  - dev:all
+
+```bash
+npm show concurrently version
+
+bun add -D concurrently@9.1.2
+
+bun run dev:all
 ```
