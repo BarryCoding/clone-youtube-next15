@@ -7,7 +7,8 @@
 > 4. 🔐 Authentication system with Clerk
 > 5. 🗄️ Neon PostgreSQL with DrizzleORM
 > 6. 🤝 sync users data by Clerk Webhook (Ngrok)
-> 7. 🔄 tRPC for type-safe APIs
+> 7. 🛡️ tRPC for type-safe APIs
+> 8. 🚦 rate limiting with upstash
 
 ## project setup
 
@@ -232,7 +233,8 @@ bun add svix@1.45.1
 ## tRPC
 
 > Achievements:  
-> 🔄 tRPC for type-safe APIs
+> 🛡️ tRPC for type-safe APIs
+> 🚦 rate limiting with upstash
 
 ### tRPC setup 
 
@@ -293,7 +295,40 @@ bun add superjson@2.2.2
     - src/trpc/query-client
     - src/trpc/client
 - add auth to context
-  - update
-    - src/trpc/init `createTRPCContext()` with clerkUserId
-  - test ✅
-    - src/trpc/routers/_app retrieve clerkUserId from `ctx`
+  - update src/trpc/init 
+    - `createTRPCContext()` with clerkUserId
+  - test src/trpc/routers/_app retrieve clerkUserId from `ctx` ✅
+
+- add a protected procedure
+  - update src/trpc/init by using a _authentication middleware_ to trpc procedure
+    - handle authentication by clerk and user data from db
+    - add user data to trpc context
+  - test src/trpc/routers/_app retrieve user from `ctx` ✅
+
+
+```bash
+npm show @upstash/redis version
+
+bun add @upstash/redis@1.34.3 @upstash/ratelimit@2.0.5
+```
+
+- add rate limiting by upstash
+  - login to upstash (redis)
+  - create database
+  - add env variables
+  - read [upstash rate limiting docs](https://upstash.com/docs/redis/sdks/ratelimit-ts/overview)
+  - src/lib
+    - create redis
+    - create ratelimit
+  - update src/trpc/init with ratelimit
+- server prefetch diff from client useSuspenseQuery will trigger rate limit 
+  - as the mismatch will retrigger fetch in the client component
+  - when mismatched the view will be Client Side Rendering
+- server prefetch same as client useSuspenseQuery will not trigger rate limit 
+  - as the match will not trigger fetch in the client component
+  - when matched the view will be Server Side Rendering
+  - in browser network tab: no such fetch exist!!!
+
+- extra: explicit request header from client
+  - update src/trpc/client.tsx
+    - mark trpcClient with header `{'x-trpc-source': 'nextjs-react'}`

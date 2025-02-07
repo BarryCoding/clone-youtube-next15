@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { baseProcedure, createTRPCRouter } from '../init'
+import { createTRPCRouter, protectedProcedure } from '../init'
 export const appRouter = createTRPCRouter({
-  hello: baseProcedure
+  hello: protectedProcedure
     .input(
       z.object({
         text: z.string(),
@@ -9,7 +9,8 @@ export const appRouter = createTRPCRouter({
     )
     .query((opts) => {
       // throw new TRPCError({ code: 'BAD_REQUEST' }) // test: error boundary and suspense
-      console.log(`🔎 🔍 ~ .query ~ clerkUserId from trpc context:`, opts.ctx.clerkUserId) // test: clerkUserId
+      // console.log(`🔎 🔍 ~ .query ~ clerkUserId from trpc context:`, opts.ctx.clerkUserId) // test: clerkUserId
+      console.log(`🔎 🔍 ~ .query ~ user from trpc context:`, opts.ctx.user) // test: clerkUserId
 
       return {
         greeting: `hello ${opts.input.text}`,

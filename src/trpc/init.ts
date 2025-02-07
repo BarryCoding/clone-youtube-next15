@@ -1,5 +1,9 @@
+import { db } from '@/db'
+import { users } from '@/db/schema'
+import { ratelimit } from '@/lib/ratelimit'
 import { auth } from '@clerk/nextjs/server'
-import { initTRPC } from '@trpc/server'
+import { initTRPC, TRPCError } from '@trpc/server'
+import { eq } from 'drizzle-orm'
 import { cache } from 'react'
 import superjson from 'superjson'
 
@@ -31,3 +35,18 @@ export const createTRPCRouter = t.router
 export const createCallerFactory = t.createCallerFactory
 
 export const baseProcedure = t.procedure
+
+// use a authentication middleware for trpc by clerkUserId
+export const protectedProcedure = t.procedure.use(async function isAuthenticated(opts) {
+  const { ctx } = opts
+  if (!ctx.clerkUserId) throw new TRPCError({ code: 'UNAUTHORIZED', message: 'no clerkUserId!' })
+
+  const [user] = await db.select().from(users).where(eq(users.clerkId, ctx.clerkUserId)).limit(1)
+  if (!user) throw new TRPCError({ code: 'UNAUTHORIZED', message: 'no user found!' })
+
+  const { success } = await ratelimit.limit(user.id)
+  if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS', message: 'rate limit exceeded!' })
+
+  // add user data to trpc context
+  return opts.next({ ctx: { ...ctx, user } })
+})
