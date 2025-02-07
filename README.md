@@ -6,6 +6,7 @@
 > 3. 📦 Module-based architecture
 > 4. 🔐 Authentication system with Clerk
 > 5. 🗄️ Neon PostgreSQL with DrizzleORM
+> 6. 🤝 sync users data by Clerk Webhook (Ngrok)
 
 ## project setup
 
@@ -171,6 +172,9 @@ bunx drizzle-kit studio # ✅ open local database studio
 
 ## webhook sync
 
+> Achievements:  
+> 🤝 sync users data by Clerk Webhook (Ngrok)
+
 - create a ngrok account and login
   - [install ngrok](https://dashboard.ngrok.com/get-started/setup/macos) by homebrew and add auth token
   - [create a domain](https://dashboard.ngrok.com/domains)
@@ -198,5 +202,28 @@ npm show concurrently version
 
 bun add -D concurrently@9.1.2
 
-bun run dev:all
+bun run dev:all # ✅
 ```
+
+- clerk dashboard (NewTube)
+  - configure -> webhook
+  - add endpoint: `https://pumped-sunfish-crack.ngrok-free.app/api/users/webhook`
+  - subscribe to events: select `user`
+  - click `create`
+  - copy signing secret to env
+  - reference [Clerk webhook guild](https://clerk.com/docs/webhooks/overview)
+- connect to this webhook
+
+```bash
+npm show svix version
+
+bun add svix@1.45.1
+```
+
+- create webhook api route
+  - src/api/users/webhook/route 🔴(oh oh)
+  - src/app/api/users/webhook/route 🟢(noice)
+- events and database tests
+  - user.created -> neon ✅ sign up with gmail
+  - user.updated -> neon ✅ update avatar image
+  - user.deleted -> neon ✅ delete user in Clerk dashboard
