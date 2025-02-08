@@ -4,11 +4,12 @@
 > 1. 🚀 Next.js 15 & React 19 & TS & ESlint & Prettier
 > 2. 💅 TailwindCSS & ShadcnUI
 > 3. 📦 Module-based architecture
-> 4. 🔐 Authentication system with Clerk
-> 5. 🗄️ Neon PostgreSQL with DrizzleORM
-> 6. 🤝 sync users data by Clerk Webhook (Ngrok)
-> 7. 🛡️ tRPC for type-safe APIs
-> 8. 🚦 rate limiting with upstash
+> 4. 📱 Responsive design across devices
+> 5. 🔐 Authentication system with Clerk
+> 6. 🗄️ Neon PostgreSQL with DrizzleORM
+> 7. 🤝 sync users data by Clerk Webhook (Ngrok)
+> 8. 🛡️ tRPC for type-safe APIs
+> 9. 🚦 rate limiting with upstash
 
 ## project setup
 
@@ -86,6 +87,7 @@ bun run build # ✅
 
 > Achievements:  
 > 📦 Module-based architecture
+> 📱 Responsive design across devices
 
 - add logo svg
   - remove unused assets in public folder
@@ -332,3 +334,11 @@ bun add @upstash/redis@1.34.3 @upstash/ratelimit@2.0.5
 - extra: explicit request header from client
   - update src/trpc/client.tsx
     - mark trpcClient with header `{'x-trpc-source': 'nextjs-react'}`
+
+## Extra Mile
+
+- type safe env by bun
+  - [reference bun docs typescript](https://bun.sh/docs/runtime/env#typescript)
+  - `bun add -d @types/bun`
+  - create bun.d.ts
+  - remove ! from env variables
