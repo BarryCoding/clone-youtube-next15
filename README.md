@@ -353,3 +353,8 @@ bun add @upstash/redis@1.34.3 @upstash/ratelimit@2.0.5
     - create script: src/script/seed-categories
     - run script once: `bun ./src/scripts/seed-categories.ts`
     - check table categories in drizzle studio ✅
+- organize categories tRPC router
+  - create categories procedure router
+  - update src/trpc/_app.ts
+  - prefetch categories
+    - RSC & RCC ✅
