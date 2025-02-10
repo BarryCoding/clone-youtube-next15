@@ -358,3 +358,11 @@ bun add @upstash/redis@1.34.3 @upstash/ratelimit@2.0.5
   - update src/trpc/_app.ts
   - prefetch categories
     - RSC & RCC ✅
+- prefetch reminder
+  - server page with `HydrateClient`
+  - client comp with `Suspense` and `ErrorBoundary`
+- update home page with categories section
+  - app/(home)/page
+  - module/home/ui/views/home-view
+  - module/home/ui/sections/categories-section
+  - components/filter-carousel
