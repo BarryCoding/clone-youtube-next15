@@ -342,3 +342,14 @@ bun add @upstash/redis@1.34.3 @upstash/ratelimit@2.0.5
   - `bun add -d @types/bun`
   - create bun.d.ts
   - remove ! from env variables
+
+## video categories
+
+- create categories 
+  - update src/db/schema
+  - push changes to db `bunx drizzle-kit push` ✅
+  - check table categories `bunx drizzle-kit studio` ✅
+  - seed categories data
+    - create script: src/script/seed-categories
+    - run script once: `bun ./src/scripts/seed-categories.ts`
+    - check table categories in drizzle studio ✅
